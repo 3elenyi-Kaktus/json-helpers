@@ -3,8 +3,6 @@ from pathlib import Path
 from typing import Any, TypeAlias
 
 
-__version__ = "0.1.1"
-
 JSON: TypeAlias = dict[str, Any] | list
 
 
