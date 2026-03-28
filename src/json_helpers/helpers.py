@@ -16,12 +16,12 @@ def readJSON(filepath: Path) -> JSON:
     return contents
 
 
-def writeJSON(filepath: Path, contents: JSON, sort: bool = False) -> None:
+def writeJSON(filepath: Path, contents: JSON, *, sort: bool = False) -> None:
     if not isinstance(contents, dict | list):
         raise RuntimeError(f"JSON Helper: Expected: '{JSON}' to write, got: {type(contents)}")
     with open(filepath, mode="wt", newline="\n") as jsonfile:
-        jsonfile.write(json.dumps(contents, ensure_ascii=False, indent=4, sort_keys=sort))
+        jsonfile.write(json.dumps(contents, ensure_ascii=False, indent=2, sort_keys=sort))
 
 
-def toReadableJSON(contents: dict | list, sort: bool = False) -> str:
-    return json.dumps(contents, ensure_ascii=False, indent=4, sort_keys=sort)
+def toReadableJSON(contents: dict | list, *, sort: bool = False) -> str:
+    return json.dumps(contents, ensure_ascii=False, indent=2, sort_keys=sort)
