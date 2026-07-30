@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, TypeAlias
 
 
-JSON: TypeAlias = dict[str, Any] | list
+JSON: TypeAlias = dict[str, Any] | list[Any]
 
 
 def readJSON(filepath: Path) -> JSON:
@@ -23,5 +23,5 @@ def writeJSON(filepath: Path, contents: JSON, *, sort: bool = False) -> None:
         jsonfile.write(json.dumps(contents, ensure_ascii=False, indent=2, sort_keys=sort))
 
 
-def toReadableJSON(contents: dict | list, *, sort: bool = False) -> str:
+def toReadableJSON(contents: JSON, *, sort: bool = False) -> str:
     return json.dumps(contents, ensure_ascii=False, indent=2, sort_keys=sort)
